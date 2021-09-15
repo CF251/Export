@@ -1,0 +1,9 @@
+{
+  "mongo": {
+  "uri": "mongodb://127.0.0.1/vault",
+  "debug": false
+  },
+  "logger": {
+    "silent": true
+  }
+}

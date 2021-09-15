@@ -1,0 +1,20 @@
+image: node:12.18.3
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script:
+          - apt-get update && apt-get install -y mongodb
+          - npm install
+          - npm run-script hydrate
+          - npm run-script test-cli
+          - npm run-script dehydrate
+        services:
+          - mongo
+
+definitions:
+  services:
+    mongo:
+      image: mongo
