@@ -1,5 +1,6 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
+import { initializeNeo4j } from './entities/infra/neo4j/neo4j';
 
 dotenv.config();
 
@@ -26,7 +27,10 @@ app.use((req: Request, res: Response, next: () => void) => {
   next();
 });
 
-initializeMongoDB().then()
+initializeMongoDB().then();
+const driver = initializeNeo4j();
+app.set('neo4j', driver);
+
 initializeRouter(app);
 
 export default app;

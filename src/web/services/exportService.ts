@@ -1,12 +1,14 @@
 import Company from '../../entities/models/companies';
 import Brand from '../../entities/models/brands';
 
-const mongoose = require('mongoose');
-
 export const listCompanyService = async () => {
-  return await Company.find()
-}
+  return await Company.find();
+};
 
 export const listBrandService = async () => {
-  return await Brand.find({})
-}
+  return await Brand.find({});
+};
+
+export const listDistinctGenericNames = async () => {
+  return await Brand.aggregate([{ $group: { _id: '$generic_name', brands: { $push: '$name' } } }]);
+};

@@ -9,5 +9,12 @@
   },
   "logger": {
     "silent": false
+  },
+  "neo4j": {
+    "uri": "bolt://127.0.0.1:7687",
+    "user": "neo4j",
+    "database": "neo4j",
+    "password": "neo",
+    "encrypted": false
   }
 }
