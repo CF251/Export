@@ -12,7 +12,7 @@
     "build": "tsc",
     "postinstall": "npm run build",
     "start": "node ./dist/server.js",
-    "dev": "npm run postinstall && nodemon ./dist/server.js",
+    "dev": "nodemon ./dist/server.js",
     "test": "jest --detectOpenHandles --forceExit",
     "lint-fix": "eslint  --fix src/**",
     "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
