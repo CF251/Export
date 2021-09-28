@@ -11,9 +11,11 @@ import Configuration from '../enums/configuration';
  */
 export const listCompanies = async (req: Request, res: Response) => {
   logger.debug('ExportController::listCompanies::validating request body');
+  const skip = req.query.skip ? parseInt(req.query.skip.toString()) : 0;
+  const limit = req.query.limit ? parseInt(req.query.limit.toString()) : 10;
   try {
     logger.debug('ExportController::listCompanies::verifying user authentication');
-    const response = await listCompanyService();
+    const response = await listCompanyService(skip, limit);
     logger.debug('ExportController::listCompanies::verified user authentication');
 
     res.status(StatusCode.OK).send(response);
@@ -30,9 +32,11 @@ export const listCompanies = async (req: Request, res: Response) => {
  */
 export const listBrands = async (req: Request, res: Response) => {
   logger.debug('ExportController::listBrands::validating request body');
+  const skip = req.query.skip ? parseInt(req.query.skip.toString()) : 0;
+  const limit = req.query.limit ? parseInt(req.query.limit.toString()) : 10;
   try {
     logger.debug('ExportController::listBrands::verifying user authentication');
-    const response = await listBrandService();
+    const response = await listBrandService(skip, limit);
     logger.debug('ExportController::listBrands::verified user authentication');
 
     res.status(StatusCode.OK).send(response);
@@ -43,8 +47,10 @@ export const listBrands = async (req: Request, res: Response) => {
 };
 
 export const listBrandsByUniqueGenericNames = async (req: Request, res: Response) => {
+  const skip = req.query.skip ? parseInt(req.query.skip.toString()) : 0;
+  const limit = req.query.limit ? parseInt(req.query.limit.toString()) : 10;
   try {
-    let response = await listDistinctGenericNames();
+    let response = await listDistinctGenericNames(skip, limit);
     response.forEach((e) => {
       const brands = [...new Set(e.brands)];
       e.brands = brands;

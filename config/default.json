@@ -4,7 +4,7 @@
     "port": 3333
   },
   "mongo": {
-    "uri": "mongodb+srv://admin:NSAsorL2scKMsgDV@cluster0.loxlf.mongodb.net/vault?retryWrites=true&w=majority",
+    "uri": "mongodb+srv://admin:NSAsorL2scKMsgDV@cluster0.loxlf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "debug": true
   },
   "logger": {
